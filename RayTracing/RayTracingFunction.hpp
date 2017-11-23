@@ -108,9 +108,12 @@ class light_and_cam{
 
 };
 
+listscene allelement;
+light_and_cam lumiere;
+
 /*---------------------------------------------*/
 /*                                             */
-/*             intersectio                     */
+/*             intersections                   */
 /*                                             */
 /*---------------------------------------------*/
 

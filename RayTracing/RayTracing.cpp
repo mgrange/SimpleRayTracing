@@ -14,9 +14,6 @@
 #include "RayTracingFunction.hpp"
 #include "RayTracingStruct.hpp"
 
-listscene allelement;
-light_and_cam lumiere;
-
 /*---------------------------------------------*/
 /*                                             */
 /*          intersections                      */
