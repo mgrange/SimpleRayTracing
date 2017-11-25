@@ -4,6 +4,8 @@
 #include <cstdio>
 #include <cmath>
 #include <iostream>
+#include <time.h>
+#include <sys/time.h>
 
 #include "vec.h"
 #include "mat.h"
@@ -16,7 +18,7 @@
 
 #define NBREFLECT 10
 #define NBREFRACT 10
-#define ANTIALIAS 0
+#define ANTIALIAS 4
 
 /*---------------------------------------------*/
 /*                                             */
@@ -108,26 +110,23 @@ class light_and_cam{
 
 };
 
-listscene allelement;
-light_and_cam lumiere;
-
 /*---------------------------------------------*/
 /*                                             */
 /*             intersections                   */
 /*                                             */
 /*---------------------------------------------*/
 
-bool intersect(const Plan& , const Ray& , Hit& , int &);
-bool intersect(const PlanDam& , const Ray& , Hit& , int &);
-bool intersect(const Sphere& , const Ray& , Hit& , int &);
-bool intersect(const SphereVerre& , const Ray& , Hit& , int &);
-bool intersect(const Triangle& , const Ray& , Hit& , int &);
-bool intersect(const Ray& , Hit& , int &);
+bool intersect(const Plan& , const Ray& , Hit& , int &, listscene & allelement, light_and_cam & lumiere);
+bool intersect(const PlanDam& , const Ray& , Hit& , int &, listscene & allelement, light_and_cam & lumiere);
+bool intersect(const Sphere& , const Ray& , Hit& , int &, listscene & allelement, light_and_cam & lumiere);
+bool intersect(const SphereVerre& , const Ray& , Hit& , int &, listscene & allelement, light_and_cam & lumiere);
+bool intersect(const Triangle& , const Ray& , Hit& , int &, listscene & allelement, light_and_cam & lumiere);
+bool intersect(const Ray& , Hit& , int &, listscene & allelement, light_and_cam & lumiere);
 
-bool shadows(const Point & ,const Vector & , const Hit&);
+bool shadows(const Point & ,const Vector & , const Hit&,  listscene & allelement, light_and_cam & lumiere);
 float speculare_light(const Vector & , const Vector & , Hit&);
-float lightsource(const Point& , const Point& , Hit&);
+float lightsource(const Point& , const Point& , Hit&, listscene & allelement, light_and_cam & lumiere);
 
-Color antiAliasing(const unsigned int x, const unsigned int y, const Ray & ray, const Point & d0, const Vector & dx0, const Vector & dy0, const Hit & hit);
+Color antiAliasing(const unsigned int x, const unsigned int y, const Ray & ray, const Point & d0, const Vector & dx0, const Vector & dy0, const Hit & hit,  listscene & allelement, light_and_cam & lumiere);
 
 #endif

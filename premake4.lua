@@ -1,9 +1,9 @@
 solution "gKit2light"
 	configurations { "debug", "release" }
 	platforms { "x64", "x32" }
-	
+
 	includedirs { ".", "src/gKit" }
-	
+
 	configuration "debug"
 		targetdir "bin/debug"
 		defines { "DEBUG" }
@@ -26,7 +26,7 @@ solution "gKit2light"
 	configuration { "linux", "debug" }
 		buildoptions { "-g"}
 		linkoptions { "-g"}
-		
+
 	configuration { "windows" }
 		defines { "WIN32", "NVWIDGETS_EXPORTS", "_USE_MATH_DEFINES", "_CRT_SECURE_NO_WARNINGS" }
 		defines { "NOMINMAX" } -- allow std::min() and std::max() in vc++ :(((
@@ -35,17 +35,17 @@ solution "gKit2light"
 		includedirs { "extern/mingw/include" }
 		libdirs { "extern/mingw/lib" }
 		links { "mingw32", "SDL2main", "SDL2", "SDL2_image", "opengl32", "glew32" }
-		
+
 	configuration { "windows", "vs2013", "x64" }
 		includedirs { "extern/visual2013/include" }
 		libdirs { "extern/visual2013/lib" }
 		links { "opengl32", "glew32", "SDL2", "SDL2main", "SDL2_image" }
-		
+
 	configuration { "windows", "vs2015", "x64" }
 		includedirs { "extern/visual2015/include" }
 		libdirs { "extern/visual2015/lib" }
 		links { "opengl32", "glew32", "SDL2", "SDL2main", "SDL2_image" }
-		
+
 	configuration "macosx"
 		local frameworks= "-F /Library/Frameworks/"
 		defines { "GK_MACOS" }
@@ -55,20 +55,6 @@ solution "gKit2light"
 
  -- description des fichiers communs
 local gkit_files = { "src/gKit/*.cpp", "src/gKit/*.h" }
-
- -- description des projets		
-local projects = {
-	"shader_kit"
-}
-
-for i, name in ipairs(projects) do
-	project(name)
-		language "C++"
-		kind "ConsoleApp"
-		targetdir "bin"
-		files ( gkit_files )
-		files { "src/" .. name..'.cpp' }
-end
 
  -- description des RayTracing
 local RayTracing = {
@@ -82,4 +68,6 @@ for i, name in ipairs(RayTracing) do
 		targetdir "bin"
 		files ( gkit_files )
 		files { "RayTracing/" .. name..'.cpp' }
+		files { "RayTracing/" .. name..'Function.cpp' }
+		files { "RayTracing/" .. name..'Struct.cpp' }
 end
