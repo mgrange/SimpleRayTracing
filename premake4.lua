@@ -70,4 +70,5 @@ for i, name in ipairs(RayTracing) do
 		files { "RayTracing/" .. name..'.cpp' }
 		files { "RayTracing/" .. name..'Function.cpp' }
 		files { "RayTracing/" .. name..'Struct.cpp' }
+		files { "RayTracing/ReadingScene.cpp" }
 end

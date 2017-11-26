@@ -6,6 +6,6 @@
 #include "RayTracingStruct.hpp"
 #include "RayTracingFunction.hpp"
 
-void readScene(const string filename);
+void readScene(const std::string filename, listscene & allelement, light_and_cam & lumiere);
 
 #endif
